@@ -29,15 +29,49 @@ you should give names to the parameters so that you can refer to them.)*/
  * class Pair {
  * public:
  *   int *pa,*pb;
- *   Pair(int, int);
+ *   Pair(int, int);  
  *   Pair(const Pair &);
  *  ~Pair();
  * };
  *
  * Implement its member functions below.
  */
- 
- 
+
+//rule of three:  if a class defines any of the following then it should probably explicitly define all three: destructor. copy constructor
+
+#include <iostream>
+class Pair {
+  public:
+    int *pa,*pb;
+    Pair(int, int);
+    Pair(const Pair &);
+    ~Pair();
+ };
+
+Pair::Pair(int a, int b){
+//    This should set up pa and pb to point to newly allocated memory locations on the heap. 
+//    The integers at those memory locations should be assigned values according to the constructor's integer arguments a and b.
+  this->pa = new int(a); //this->pa = new int(a); 
+  this->pb = new int(b);
+}
+
+Pair::Pair(const Pair & other){
+//  A copy constructor Pair(const Pair& other): This takes as its argument a read-only reference to another Pair. 
+// It should set up the newly constructed Pair as a "deep copy," that is, it should create a new Pair that is equivalent
+// to the other Pair based on dereferenced values but does not reuse any of the same memory locations. 
+// In other words, the copy constructor should set up its own instance's member variables pa and pb to point to newly allocated memory locations for integers on the heap;
+//  those memory locations must be new, not the same locations pointed to by the other Pair,
+//  but the integers at these new locations should be assigned values according to the integers that the other Pair is pointing to.
+  this->pa = new int;
+  this->pb = new int; 
+  *pa = *(other.pa);
+  *pb = *(other.pb);
+}
+
+Pair::~Pair(){
+  delete this->pa;
+  delete this->pb;
+}
  
  /* Here is a main() function you can use
   * to check your implementation of the
