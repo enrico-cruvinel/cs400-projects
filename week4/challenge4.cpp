@@ -19,14 +19,19 @@ and set the member variable "sum"  to the sum of a and b.*/
  *
  * Class sumPair has also already been
  * defined as follows:
- *
- * class sumPair : public Pair {
- * public:
- *   int sum;
- *   sumPair(int,int);
- * };
- * 
- * Implement the constructor
+ */
+
+class Pair{
+  pub
+};
+
+ class sumPair : public Pair {
+ public:
+   int sum;
+   sumPair(int,int);
+ };
+
+ /* Implement the constructor
  * sumPair(int,int) such that it
  * loads the two member variables of
  * the base Pair class with its
@@ -34,6 +39,12 @@ and set the member variable "sum"  to the sum of a and b.*/
  * member variable sum with their sum.
  */
 
+// sumPair::sumPair(int a, int b) : Pair(a,b) {
+//   Pair(a, b);
+//   sum = a+b;
+// }
+
+sumPair::sumPair(int a, int b) : Pair(a,b), sum(a,b) {}
 
 /* Below is a main() function
  * you can use to test your
